@@ -1,8 +1,8 @@
 # Rechte an den verwendeten Fragebögen
 
-Die MIT-Lizenz dieses Projekts gilt für den Code (`app.js`, `scoring.js`, `server.js`, `index.html`, `styles.css`, `logo.svg`) und die Struktur von `data.js`. Sie gilt **nicht** für die Fragebögen, auf denen die Fragen beruhen. Diese bleiben geistiges Eigentum ihrer Autorinnen, Autoren und Rechteinhaber.
+Die MIT-Lizenz dieses Projekts gilt für den Code (alle Dateien ausser den Fragetexten) und die Struktur von `public/data.js`. Sie gilt **nicht** für die Fragebögen, auf denen die Fragen beruhen. Diese bleiben geistiges Eigentum ihrer Autorinnen, Autoren und Rechteinhaber.
 
-Die Fragen in `data.js` sind eigene, sinngemässe deutsche Übertragungen. Sie sind keine offiziellen oder validierten Übersetzungen.
+Die Fragen in `public/data.js` sind eigene, sinngemässe deutsche Übertragungen. Sie sind keine offiziellen oder validierten Übersetzungen.
 
 | Instrument | Rechteinhaber / Quelle | Hinweis |
 |---|---|---|

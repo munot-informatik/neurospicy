@@ -36,15 +36,24 @@ Voraussetzung ist Node.js. Es gibt keine Abhängigkeiten und keinen Build-Schrit
 node server.js
 ```
 
-Danach http://localhost:5173 öffnen. Die App besteht nur aus statischen Dateien und läuft auf jedem Webspace.
+Danach http://localhost:5173 öffnen. Die App besteht nur aus den statischen Dateien im Ordner `public/` und läuft auf jedem Webspace.
+
+## Veröffentlichen
+
+Die Live-Seite läuft als Cloudflare Worker, der den Ordner `public/` ausliefert:
+
+```bash
+npx wrangler deploy
+```
 
 | Datei | Inhalt |
 |---|---|
-| `index.html`, `styles.css` | Seite und Gestaltung |
-| `data.js` | Fragen, Antwortskalen, Quellen, Testzusammenstellung |
-| `scoring.js` | Auswertung und Ergebnistexte |
-| `app.js` | Ablauf: Start, Fragen, Ergebnis |
+| `public/index.html`, `public/styles.css` | Seite und Gestaltung |
+| `public/data.js` | Fragen, Antwortskalen, Quellen, Testzusammenstellung |
+| `public/scoring.js` | Auswertung und Ergebnistexte |
+| `public/app.js` | Ablauf: Start, Fragen, Ergebnis |
 | `server.js` | Kleiner lokaler Server zum Ausprobieren |
+| `wrangler.jsonc` | Konfiguration für Cloudflare Workers |
 
 ## FAQ
 
@@ -64,7 +73,7 @@ Screening-Tests schlagen ausserdem bewusst lieber einmal zu oft an als einmal zu
 
 ### Woher stammen Fragen und Schwellen?
 
-Aus den veröffentlichten Originalbögen und Studien. Sie sind in der App unter «Quellen» pro Test verlinkt und in [`data.js`](data.js) hinterlegt.
+Aus den veröffentlichten Originalbögen und Studien. Sie sind in der App unter «Quellen» pro Test verlinkt und in [`public/data.js`](public/data.js) hinterlegt.
 
 ### Was wurde nicht an der Primärquelle geprüft?
 
@@ -101,7 +110,7 @@ Ja, der Code steht unter der MIT-Lizenz. Für die Fragebögen selbst gilt das ni
 
 Der **Code** dieses Projekts steht unter der [MIT-Lizenz](LICENSE).
 
-Die **Fragebögen** gehören ihren jeweiligen Rechteinhabern und sind von der MIT-Lizenz ausgenommen. Die Fragen in `data.js` sind eigene deutsche Übertragungen dieser Instrumente. Wer das Projekt weiterverwendet oder kommerziell einsetzt, muss die Nutzungsrechte selbst klären. Details stehen in [NOTICE.md](NOTICE.md).
+Die **Fragebögen** gehören ihren jeweiligen Rechteinhabern und sind von der MIT-Lizenz ausgenommen. Die Fragen in `public/data.js` sind eigene deutsche Übertragungen dieser Instrumente. Wer das Projekt weiterverwendet oder kommerziell einsetzt, muss die Nutzungsrechte selbst klären. Details stehen in [NOTICE.md](NOTICE.md).
 
 ## Hilfe in Krisen
 

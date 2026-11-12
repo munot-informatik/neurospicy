@@ -1,0 +1,9 @@
+{
+  // Cloudflare Worker, der nur die statischen Dateien ausliefert
+  "name": "neurospicy",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "./public" },
+  "routes": [
+    { "pattern": "spicy.munot-informatik.ch", "custom_domain": true }
+  ]
+}

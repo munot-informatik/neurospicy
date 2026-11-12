@@ -20,6 +20,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-The questionnaires on which the questions in data.js are based are NOT covered
+The questionnaires on which the questions in public/data.js are based are NOT covered
 by this license. They remain the property of their respective rights holders.
 See NOTICE.md.
