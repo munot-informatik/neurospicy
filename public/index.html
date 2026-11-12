@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neurospicy – Selbsttests zur Neurodiversität</title>
   <meta name="description" content="Wissenschaftlich fundierte Selbsttests zu ADHS, Autismus, Dyslexie, Dyspraxie und Tics. Kein Ersatz für eine Diagnose.">
+  <meta name="color-scheme" content="light dark">
   <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <script>
+    // Gespeichertes Farbschema vor dem ersten Zeichnen setzen (verhindert Aufblitzen)
+    try { var t = localStorage.getItem("theme"); if (t === "dark" || t === "light") document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,14 +21,16 @@
       <span>Neuro<b>spicy</b></span>
     </button>
     <span class="top-right">
-      <span class="top-note">Anonym · Nichts wird gespeichert</span>
+      <span class="top-note" id="topNote">Anonym · Nichts wird gespeichert</span>
       <button class="top-link" id="srcLink" type="button">Quellen</button>
+      <button class="top-icon" id="langBtn" type="button">EN</button>
+      <button class="top-icon" id="themeBtn" type="button"></button>
     </span>
   </header>
   <main id="app" tabindex="-1"></main>
   <footer class="foot">
-    <p><strong>Wichtig:</strong> Diese Selbsttests sind Orientierungshilfen und keine Diagnose. Sie ersetzen weder eine ärztliche noch eine psychologische Abklärung.</p>
-    <p>Wenn es dir gerade sehr schlecht geht: Schweiz 143 (Die Dargebotene Hand) · Deutschland 0800 111 0 111 (Telefonseelsorge) · Österreich 142 · Notfall 112</p>
+    <p id="footNote"></p>
+    <p id="footCrisis"></p>
   </footer>
   <script src="data.js"></script>
   <script src="scoring.js"></script>

@@ -14,7 +14,7 @@ Neurospicy ist eine kleine Web-App ohne Server-Logik. Sie führt durch sieben Se
 |---|---|---|
 | Allgemeiner Orientierungstest | ASRS-Screener, AQ-10, Dyslexie-Checkliste, ADC (Kindheit), Tic-Liste, PHQ-4 | 50 |
 | ADHS | ASRS v1.1, ASRS-5 | 22 |
-| Autismus-Spektrum (Langfassung) | AQ (50 Fragen), RAADS-R (80 Fragen) | 131 |
+| Autismus-Spektrum (Langfassung) | AQ (50 Fragen), RAADS-R (80 Fragen); 11 inhaltsgleiche Fragen nur einmal gestellt | 120 |
 | Masking & Anpassung | CAT-Q | 25 |
 | Dyslexie (Legasthenie) | Adult Dyslexia Checklist | 15 |
 | Dyspraxie (DCD) | ADC | 40 |
@@ -26,7 +26,9 @@ Eigenschaften:
 - **Einfach- und Mehrfachauswahl.** Die meisten Fragen haben eine Antwortskala; Tic-Listen und Lebensbereiche erlauben mehrere Antworten.
 - **Hinweis vor dem Start.** Ohne Bestätigung, dass der Test keine Diagnose ist, lässt sich kein Test starten.
 - **Nachvollziehbare Auswertung.** Jede Ergebniskarte zeigt Punktwert, Schwelle, Einordnung und die Quelle.
-- **Privat.** Alle Antworten bleiben im Browser. Es gibt keine Datenbank, keine Cookies, kein Tracking.
+- **Deutsch und Englisch.** Die Sprache lässt sich oben rechts jederzeit umschalten, auch mitten im Test.
+- **Helles und dunkles Design.** Folgt der Systemeinstellung und lässt sich oben rechts umschalten.
+- **Privat.** Alle Antworten bleiben im Browser. Es gibt keine Datenbank, keine Cookies, kein Tracking. Nur Sprache und Design werden lokal im Browser gemerkt.
 
 ## Lokal starten
 
@@ -74,6 +76,12 @@ Screening-Tests schlagen ausserdem bewusst lieber einmal zu oft an als einmal zu
 ### Sind mehr Fragen genauer?
 
 Teilweise. Längere Fragebögen messen stabiler und zeigen ein Profil über mehrere Bereiche; deshalb verwendet der Autismus-Test die Langfassungen AQ und RAADS-R. Die Trefferquote steigt aber nicht beliebig: Auch 130 Fragen bleiben eine Selbsteinschätzung und ersetzen weder Beobachtung noch Gespräch.
+
+### Warum klingen manche Fragen fast gleich?
+
+Innerhalb eines Fragebogens ist das gewollt. RAADS-R, CAT-Q und ADC fragen ähnliche Dinge absichtlich mehrmals, teils gegenteilig formuliert oder einmal für die Kindheit und einmal für heute. So lässt sich prüfen, ob die Antworten stimmig sind; die Schwellen gelten nur mit allen Fragen.
+
+Zwischen zwei Fragebögen ist es nicht nötig. Der Autismus-Test kombiniert AQ und RAADS-R. 11 AQ-Fragen entsprechen inhaltlich einer RAADS-R-Frage und werden deshalb nur einmal gestellt. Für den AQ zählt dann, ob die Aussage heute zutrifft. Der AQ wird ohnehin nur nach Zustimmung oder Ablehnung gewertet, die Zuordnung ist deshalb eindeutig.
 
 ### Woher stammen Fragen und Schwellen?
 

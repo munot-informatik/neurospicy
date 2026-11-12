@@ -2,7 +2,7 @@
 
 Die MIT-Lizenz dieses Projekts gilt für den Code (alle Dateien ausser den Fragetexten) und die Struktur von `public/data.js`. Sie gilt **nicht** für die Fragebögen, auf denen die Fragen beruhen. Diese bleiben geistiges Eigentum ihrer Autorinnen, Autoren und Rechteinhaber.
 
-Die Fragen in `public/data.js` sind eigene, sinngemässe deutsche Übertragungen. Sie sind keine offiziellen oder validierten Übersetzungen.
+Die deutschen Fragen in `public/data.js` sind eigene, sinngemässe Übertragungen. Sie sind keine offiziellen oder validierten Übersetzungen. Die englischen Fragen folgen dem Wortlaut der Originalbögen; Dyslexie-Checkliste und ADC sind als «How often …» umformuliert, damit Frage und Antwortskala zusammenpassen.
 
 | Instrument | Rechteinhaber / Quelle | Hinweis |
 |---|---|---|
