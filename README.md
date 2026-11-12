@@ -14,7 +14,7 @@ Neurospicy ist eine kleine Web-App ohne Server-Logik. Sie führt durch sieben Se
 |---|---|---|
 | Allgemeiner Orientierungstest | ASRS-Screener, AQ-10, Dyslexie-Checkliste, ADC (Kindheit), Tic-Liste, PHQ-4 | 50 |
 | ADHS | ASRS v1.1, ASRS-5 | 22 |
-| Autismus-Spektrum | AQ-10, RAADS-14 Screen | 25 |
+| Autismus-Spektrum (Langfassung) | AQ (50 Fragen), RAADS-R (80 Fragen) | 131 |
 | Masking & Anpassung | CAT-Q | 25 |
 | Dyslexie (Legasthenie) | Adult Dyslexia Checklist | 15 |
 | Dyspraxie (DCD) | ADC | 40 |
@@ -71,6 +71,10 @@ So genau wie die zugrunde liegenden Fragebögen, mit drei Einschränkungen:
 
 Screening-Tests schlagen ausserdem bewusst lieber einmal zu oft an als einmal zu wenig. Der RAADS-14 etwa erkennt 97 % der autistischen Erwachsenen, ist aber auch bei vielen Menschen mit ADHS positiv.
 
+### Sind mehr Fragen genauer?
+
+Teilweise. Längere Fragebögen messen stabiler und zeigen ein Profil über mehrere Bereiche; deshalb verwendet der Autismus-Test die Langfassungen AQ und RAADS-R. Die Trefferquote steigt aber nicht beliebig: Auch 130 Fragen bleiben eine Selbsteinschätzung und ersetzen weder Beobachtung noch Gespräch.
+
 ### Woher stammen Fragen und Schwellen?
 
 Aus den veröffentlichten Originalbögen und Studien. Sie sind in der App unter «Quellen» pro Test verlinkt und in [`public/data.js`](public/data.js) hinterlegt.
@@ -79,6 +83,8 @@ Aus den veröffentlichten Originalbögen und Studien. Sie sind in der App unter 
 
 - **ASRS-5:** Die Originalstudie verwendet eine gewichtete Wertung, deren Punktwerte nicht frei veröffentlicht sind. Die App rechnet mit der einfachen Summe (0–4 pro Frage, Schwelle 14).
 - **ADC (Dyspraxie):** Wertung 0–3 und die Schwellen 56/65 sind über spätere Studien belegt, nicht über die Originalarbeit. Andere Sprachfassungen verwenden abweichende Schwellen.
+- **RAADS-R:** Die Fragen und Punktwerte stammen aus einem Auswertungsbogen von NovoPsych, weil der Fragebogen in der Originalarbeit nur als Bild vorliegt. Die Autoren haben ihn für die Anwendung zusammen mit einer Fachperson entwickelt; online und allein ausgefüllt fallen die Werte oft höher aus.
+- **AQ (50 Fragen):** Frage 1 wird bei Ablehnung gewertet. In der Originalarbeit steht sie irrtümlich in der Liste «Zustimmung».
 - **CAT-Q:** Die Autoren nennen keine Schwelle. 100 von 175 ist ein verbreiteter, inoffizieller Orientierungswert.
 - **Tics:** Für Tic-Fragebögen gibt es keine validierte Diagnoseschwelle. Die Einordnung folgt den DSM-5-Kriterien.
 

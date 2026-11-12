@@ -115,6 +115,61 @@ function scoreRaads(A) {
   };
 }
 
+/* AQ (50): 1 Punkt für Zustimmung bei AQ_AGREE, sonst 1 Punkt für Ablehnung.
+   Frage 1 zählt bei Ablehnung (korrigierter Schlüssel; in der Originalarbeit steht sie irrtümlich bei «Zustimmung»). */
+const AQ_AGREE = [2, 4, 5, 6, 7, 9, 12, 13, 16, 18, 19, 20, 21, 22, 23, 26, 33, 35, 39, 41, 42, 43, 45, 46];
+const AQ_SUB = [
+  ["Soziale Fähigkeiten", [1, 11, 13, 15, 22, 36, 44, 45, 47, 48]],
+  ["Aufmerksamkeitswechsel", [2, 4, 10, 16, 25, 32, 34, 37, 43, 46]],
+  ["Aufmerksamkeit für Details", [5, 6, 9, 12, 19, 23, 28, 29, 30, 49]],
+  ["Kommunikation", [7, 17, 18, 26, 27, 31, 33, 35, 38, 39]],
+  ["Vorstellungskraft", [3, 8, 14, 20, 21, 24, 40, 41, 42, 50]]
+];
+function scoreAq50(A) {
+  const pt = n => { const v = A["aq" + n]; return (AQ_AGREE.includes(n) ? v <= 1 : v >= 2) ? 1 : 0; };
+  const s = sum(Array.from({ length: 50 }, (_, i) => i + 1), pt);
+  const level = s >= 32 ? "high" : s >= 26 ? "mid" : "low";
+  return {
+    title: "Autismus-Spektrum-Quotient (AQ, 50 Fragen)", level, score: s, max: 50, mark: 32,
+    headline: s >= 32 ? "Deutlich ausgeprägte autistische Züge" : s >= 26 ? "Erhöhte autistische Züge" : "Autistische Züge im üblichen Bereich",
+    text: "Ab 32 Punkten sprechen die Autoren von klinisch bedeutsam ausgeprägten autistischen Zügen: 80 % der autistischen Erwachsenen der Originalstudie lagen darüber, aber nur 2 % der Vergleichsgruppe. Zum Vergleich die Mittelwerte: autistische Erwachsene 35,8, Vergleichsgruppe 16,4. Ein hoher Wert allein ist keine Diagnose; entscheidend ist, ob du im Alltag darunter leidest.",
+    bars: AQ_SUB.map(x => ({ label: x[0], score: sum(x[1], pt), max: 10 })),
+    facts: [
+      "Schwelle: 32 von 50 (Baron-Cohen et al., 2001)",
+      "Werte ab 26 werden in späteren Arbeiten als Schwelle für eine weitere Abklärung verwendet (Woodbury-Smith et al., 2005)."
+    ],
+    sources: ["aq50"]
+  };
+}
+
+/* RAADS-R (80): 3/2/1/0 Punkte; bei den 17 «normativen» Fragen umgekehrt. */
+const RR_REV = [1, 6, 11, 18, 23, 26, 33, 37, 43, 47, 48, 53, 58, 62, 68, 72, 77];
+const RR_SUB = [
+  ["Soziale Bezogenheit", [1, 3, 5, 6, 8, 11, 12, 14, 17, 18, 20, 21, 22, 23, 25, 26, 28, 31, 37, 38, 39, 43, 44, 45, 47, 48, 53, 54, 55, 60, 61, 64, 68, 69, 72, 76, 77, 79, 80], 31],
+  ["Eingegrenzte Interessen", [9, 13, 24, 30, 32, 40, 41, 50, 52, 56, 63, 70, 75, 78], 15],
+  ["Sprache", [2, 7, 15, 27, 35, 58, 66], 4],
+  ["Sinneswahrnehmung und Motorik", [4, 10, 16, 19, 29, 33, 34, 36, 42, 46, 49, 51, 57, 59, 62, 65, 67, 71, 73, 74], 16]
+];
+function scoreRaadsR(A) {
+  const pt = n => { const p = 3 - A["rr" + n]; return RR_REV.includes(n) ? 3 - p : p; };
+  const s = sum(Array.from({ length: 80 }, (_, i) => i + 1), pt);
+  const level = s >= 106 ? "high" : s >= 65 ? "mid" : "low";
+  return {
+    title: "RAADS-R (80 Fragen)", level, score: s, max: 240, mark: 65,
+    headline: s >= 140 ? "Sehr deutlich ausgeprägte autistische Merkmale"
+      : s >= 106 ? "Das Antwortmuster passt zu Autismus"
+      : s >= 65 ? "Über der Originalschwelle: einige autistische Merkmale"
+      : "Unter der Schwelle",
+    text: "In der Originalstudie lagen alle Personen ohne Autismus unter 65 Punkten, 97 % der autistischen Erwachsenen darüber. Mittelwerte: autistische Erwachsene 134, Vergleichsgruppen 26. Neuere Auswertungen unterscheiden feiner: 65–105 einige autistische Merkmale, 106–139 passend zu Autismus, ab 140 sehr deutlich. Der RAADS-R wurde für die Anwendung zusammen mit einer Fachperson entwickelt. Online und allein ausgefüllt fallen die Werte oft höher aus, vor allem bei ADHS, Angst oder Depression.",
+    bars: RR_SUB.map(x => ({ label: x[0] + " (Schwelle " + x[2] + ")", score: sum(x[1], pt), max: x[1].length * 3, mark: x[2] })),
+    facts: [
+      "Schwelle: 65 von 240 (Ritvo et al., 2011); Teilskalen-Schwellen aus derselben Arbeit",
+      "Bereiche 65–105 · 106–139 · ab 140 nach neueren Normen (NovoPsych, 2025)"
+    ],
+    sources: ["raadsr", "raadsrNorm"]
+  };
+}
+
 function scoreCatq(A) {
   const pts = id => { const p = A[id] + 1; return Q[id].rev ? 8 - p : p; };
   const ids = Object.keys(Q).filter(k => /^c\d+$/.test(k));
@@ -248,7 +303,7 @@ function evaluate(testId, A) {
   switch (testId) {
     case "adhd": return [scoreAsrsA(A), scoreAsrs5(A), scoreAsrsProfile(A)];
     case "asd": {
-      const cards = [scoreAq10(A), scoreRaads(A)];
+      const cards = [scoreAq50(A), scoreRaadsR(A)];
       const n = contextNotes(A, "asd");
       if (n.length) cards[0].facts = cards[0].facts.concat(n);
       return cards;
