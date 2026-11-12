@@ -290,53 +290,57 @@ CATQ.forEach((c, i) => add("c" + (i + 1), c[2], FNOW, "agree7", { sub: c[0], rev
   [1, "dysEase", "Wie leicht fällt es dir, laut vorzulesen?"]
 ].forEach((d, i) => add("d" + (i + 1), d[2], FNOW, d[1], { w: d[0] }));
 
-/* ---------- Dyspraxie/DCD: ADC (40 Items) ---------- */
+/* ---------- Dyspraxie/DCD: ADC (40 Items) ----------
+   Originalskala: Nie / Manchmal / Häufig / Immer (0–3). Alle Fragen sind als
+   «Wie oft …» formuliert, damit Frage und Antwort zusammenpassen. Bei einmaligen
+   Lernvorgängen (Velo, Autofahren) passt eine Häufigkeit sprachlich nicht; dort
+   stehen vier gleich gewertete Stufen der Ausprägung. */
 [
-  "Hattest du als Kind Mühe mit Dingen wie Schuhe binden, Knöpfe oder Reissverschlüsse schliessen?",
-  "Hattest du als Kind Mühe, zu essen, ohne dich zu bekleckern?",
-  "Hattest du als Kind – verglichen mit Gleichaltrigen – Mühe, Velofahren zu lernen?",
-  "Hattest du als Kind Mühe bei Mannschaftsspielen wie Fussball oder beim genauen Fangen und Werfen von Bällen?",
-  "Hattest du als Kind Mühe, so ordentlich zu schreiben, dass andere es lesen konnten?",
-  "Hattest du als Kind Mühe, so schnell zu schreiben wie Gleichaltrige?",
-  "Bist du als Kind häufiger als andere an Dinge oder Menschen gestossen oder über etwas gestolpert?",
-  "Hattest du als Kind Mühe, ein Musikinstrument zu spielen (z. B. Geige oder Blockflöte)?",
-  "Hattest du als Kind Mühe, deine Sachen im Zimmer zu ordnen oder wiederzufinden?",
-  "Haben andere in deiner Kindheit deine Koordination bemängelt oder dich ungeschickt genannt?"
-].forEach((t, i) => add("pA" + (i + 1), t, FKID, "adc"));
+  "Wie oft hattest du als Kind Mühe mit Dingen wie Schuhe binden, Knöpfe oder Reissverschlüsse schliessen?",
+  "Wie oft hattest du als Kind Mühe, zu essen, ohne dich zu bekleckern?",
+  ["Hattest du als Kind – verglichen mit Gleichaltrigen – Mühe, Velofahren zu lernen?", ["Nein, gar nicht", "Ein wenig", "Deutlich", "Sehr grosse Mühe"]],
+  "Wie oft hattest du als Kind Mühe bei Mannschaftsspielen wie Fussball oder beim genauen Fangen und Werfen von Bällen?",
+  "Wie oft hattest du als Kind Mühe, so ordentlich zu schreiben, dass andere es lesen konnten?",
+  "Wie oft hattest du als Kind Mühe, so schnell zu schreiben wie Gleichaltrige?",
+  "Wie oft bist du als Kind – häufiger als andere – an Dinge oder Menschen gestossen oder über etwas gestolpert?",
+  "Wie oft hattest du als Kind Mühe, ein Musikinstrument zu spielen (z. B. Geige oder Blockflöte)?",
+  "Wie oft hattest du als Kind Mühe, deine Sachen im Zimmer zu ordnen oder wiederzufinden?",
+  "Wie oft haben andere in deiner Kindheit deine Koordination bemängelt oder dich ungeschickt genannt?"
+].forEach((t, i) => add("pA" + (i + 1), Array.isArray(t) ? t[0] : t, FKID, "adc", Array.isArray(t) ? { options: t[1] } : null));
 [
-  "Hast du Schwierigkeiten bei der Körperpflege, etwa beim Rasieren oder Schminken?",
-  "Hast du Schwierigkeiten beim Essen mit Messer und Gabel oder Löffel?",
-  "Hast du Schwierigkeiten mit Hobbys, die gute Koordination verlangen?",
-  "Hast du Schwierigkeiten, leserlich zu schreiben, wenn es schnell gehen muss?",
-  "Hast du Schwierigkeiten, so schnell zu schreiben wie andere?",
-  "Hast du Schwierigkeiten, deine eigene Handschrift zu lesen?",
-  "Hast du Schwierigkeiten, etwas fehlerfrei abzuschreiben?",
-  "Hast du Schwierigkeiten, deine Sachen im Zimmer zu ordnen oder wiederzufinden?",
-  "Hast du Schwierigkeiten, dich in neuen Gebäuden oder an neuen Orten zurechtzufinden?",
-  "Haben andere dich schon als unorganisiert bezeichnet?"
+  "Wie oft hast du Schwierigkeiten bei der Körperpflege, etwa beim Rasieren oder Schminken?",
+  "Wie oft hast du Schwierigkeiten beim Essen mit Messer und Gabel oder Löffel?",
+  "Wie oft hast du Schwierigkeiten mit Hobbys, die gute Koordination verlangen?",
+  "Wie oft hast du Schwierigkeiten, leserlich zu schreiben, wenn es schnell gehen muss?",
+  "Wie oft hast du Schwierigkeiten, so schnell zu schreiben wie andere?",
+  "Wie oft hast du Schwierigkeiten, deine eigene Handschrift zu lesen?",
+  "Wie oft hast du Schwierigkeiten, etwas fehlerfrei abzuschreiben?",
+  "Wie oft hast du Schwierigkeiten, deine Sachen im Zimmer zu ordnen oder wiederzufinden?",
+  "Wie oft hast du Schwierigkeiten, dich in neuen Gebäuden oder an neuen Orten zurechtzufinden?",
+  "Wie oft haben andere dich schon als unorganisiert bezeichnet?"
 ].forEach((t, i) => add("pB" + (i + 1), t, FCUR, "adc"));
 [
-  "Fällt es dir schwer, still zu sitzen, oder wirkst du zappelig?",
-  "Verlierst du Dinge oder lässt du sie irgendwo liegen?",
-  "Stösst du an Dinge, verschüttest etwas oder machst Sachen kaputt?",
-  "Brauchst du morgens länger als andere, um aufzustehen und zur Arbeit oder Ausbildung zu kommen?",
-  "Hast du länger gebraucht als andere, um Autofahren zu lernen? (Falls du nie gefahren bist: «Nie»)",
-  "Fällt es anderen schwer, deine Handschrift zu lesen?",
-  "Vermeidest du Hobbys, die gute Koordination verlangen?",
-  "Verbringst du deine Freizeit eher allein als mit anderen?",
-  "Vermeidest du Mannschaftsspiele oder Mannschaftssport?",
-  "Wenn du Sport treibst: eher allein (z. B. im Fitnessstudio) als mit anderen?",
-  "Hast du es – als Teenager, in deinen Zwanzigern oder heute – eher vermieden, in Clubs oder tanzen zu gehen?",
-  "Hast du Schwierigkeiten beim Parkieren eines Autos? (Falls du nicht fährst: «Nie»)",
-  "Fällt es dir schwer, eine Mahlzeit von Grund auf zuzubereiten?",
-  "Fällt es dir schwer, einen Koffer für eine Reise zu packen?",
-  "Fällt es dir schwer, Kleider ordentlich zusammenzulegen und zu versorgen?",
-  "Fällt es dir schwer, mit Geld umzugehen und es einzuteilen?",
-  "Fällt es dir schwer, zwei Dinge gleichzeitig zu tun (z. B. Auto fahren und zuhören)?",
-  "Fällt es dir schwer, Distanzen einzuschätzen (z. B. beim Parkieren oder beim Durchgehen zwischen Gegenständen)?",
-  "Fällt es dir schwer, vorauszuplanen?",
-  "Hast du das Gefühl, in verschiedenen Situationen die Aufmerksamkeit zu verlieren?"
-].forEach((t, i) => add("pC" + (i + 1), t, FCUR, "adc"));
+  "Wie oft fällt es dir schwer, still zu sitzen, oder wirkst du zappelig?",
+  "Wie oft verlierst du Dinge oder lässt sie irgendwo liegen?",
+  "Wie oft stösst du an Dinge, verschüttest etwas oder machst Sachen kaputt?",
+  "Wie oft brauchst du morgens länger als andere, um aufzustehen und zur Arbeit oder Ausbildung zu kommen?",
+  ["Hast du länger gebraucht als andere, um Autofahren zu lernen?", ["Nein (oder nie gefahren)", "Etwas länger", "Deutlich länger", "Sehr viel länger"]],
+  "Wie oft fällt es anderen schwer, deine Handschrift zu lesen?",
+  "Wie oft vermeidest du Hobbys, die gute Koordination verlangen?",
+  "Wie oft verbringst du deine Freizeit lieber allein als mit anderen?",
+  "Wie oft vermeidest du Mannschaftsspiele oder Mannschaftssport?",
+  "Wenn du Sport treibst: Wie oft tust du das eher allein (z. B. im Fitnessstudio) als mit anderen?",
+  "Wie oft hast du es – als Teenager, in deinen Zwanzigern oder heute – vermieden, in Clubs oder tanzen zu gehen?",
+  "Wie oft hast du Schwierigkeiten beim Parkieren eines Autos? (Falls du nicht fährst: «Nie»)",
+  "Wie oft fällt es dir schwer, eine Mahlzeit von Grund auf zuzubereiten?",
+  "Wie oft fällt es dir schwer, einen Koffer für eine Reise zu packen?",
+  "Wie oft fällt es dir schwer, Kleider ordentlich zusammenzulegen und zu versorgen?",
+  "Wie oft fällt es dir schwer, mit Geld umzugehen und es einzuteilen?",
+  "Wie oft fällt es dir schwer, zwei Dinge gleichzeitig zu tun (z. B. Auto fahren und zuhören)?",
+  "Wie oft fällt es dir schwer, Distanzen einzuschätzen (z. B. beim Parkieren oder beim Durchgehen zwischen Gegenständen)?",
+  "Wie oft fällt es dir schwer, vorauszuplanen?",
+  "Wie oft hast du das Gefühl, in verschiedenen Situationen die Aufmerksamkeit zu verlieren?"
+].forEach((t, i) => add("pC" + (i + 1), Array.isArray(t) ? t[0] : t, FCUR, "adc", Array.isArray(t) ? { options: t[1] } : null));
 
 /* ---------- Stimmung & Angst: PHQ-4 ---------- */
 [

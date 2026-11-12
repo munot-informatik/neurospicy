@@ -136,6 +136,9 @@ a { color: var(--teal-dark); }
 .opt.on .key { background: var(--teal); color: #fff; }
 .opt.check input { width: 20px; height: 20px; accent-color: var(--teal); flex: none; }
 .opt.none { border-style: dashed; }
+/* Stufenskala von links nach rechts */
+.opts.row { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 8px; }
+.opts.row .opt { flex-direction: column; justify-content: flex-start; text-align: center; gap: 8px; padding: 14px 6px; font-size: 0.93rem; line-height: 1.3; hyphens: auto; overflow-wrap: anywhere; }
 .multi-hint { margin: 14px 0 0; font-size: 0.88rem; color: var(--muted); }
 .nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; }
 .cheer { text-align: center; color: var(--muted); font-size: 0.95rem; margin-top: 22px; }
@@ -206,6 +209,9 @@ main:focus-visible { outline: none; }
   .test-go { display: none; }
   .test-icon { width: 48px; height: 48px; font-size: 1.6rem; }
   .thr { margin-left: 0; width: 100%; }
+  /* Auf schmalen Bildschirmen passen die Beschriftungen nicht nebeneinander */
+  .opts.row { grid-template-columns: 1fr; gap: 10px; }
+  .opts.row .opt { flex-direction: row; text-align: left; gap: 12px; padding: 14px 16px; font-size: inherit; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 @media print {

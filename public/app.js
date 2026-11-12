@@ -18,6 +18,8 @@ function shuffle(arr) {
 }
 
 const optionsOf = q => q.options || SCALES[q.scale];
+// Kurze Stufenskalen (Nie – Manchmal – Häufig – Immer usw.) stehen nebeneinander
+const ROW_SCALES = ["freq5", "adc", "dysFreq", "dysEase", "agree4", "phq"];
 const minutes = n => Math.max(2, Math.round(n * 0.2));
 
 function go(screen) {
@@ -160,7 +162,7 @@ function renderQuiz() {
       <div class="card question" key="${q.id}">
         <p class="frame">${esc(q.frame)}</p>
         <h2 class="qtext">${esc(q.text)}</h2>
-        <div class="opts ${q.type === "multi" ? "multi" : ""} ${opts.length > 5 ? "dense" : ""}">${body}</div>
+        <div class="opts ${q.type === "multi" ? "multi" : ""} ${opts.length > 5 ? "dense" : ""} ${ROW_SCALES.includes(q.scale) ? "row" : ""}" style="--n:${opts.length}">${body}</div>
         ${q.type === "multi" ? '<p class="multi-hint">Du kannst mehrere Antworten auswählen.</p>' : ""}
       </div>
       <div class="nav">
